@@ -124,3 +124,8 @@ exports.obtenerUsuariosPorEdad = functions.https.onRequest(async (req, res) => {
 //   logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
+
+/*
+Completada subida de archivo especifico en storage y atribuido permiso al usuario para poder 
+visualizarlo
+*/
