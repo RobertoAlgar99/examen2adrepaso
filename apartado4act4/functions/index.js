@@ -15,7 +15,7 @@ admin.initializeApp();
 // const logger = require("firebase-functions/logger");
 
 exports.crearUsuario = functions.https.onRequest(async (req, res) => {
-  const {nombre, email, edad} = req.body;
+  const {uid, nombre, email, edad} = req.body;
 
   if (!nombre || !email || edad === undefined) {
     return res.status(400).json({error: "Faltan campos requeridos"});
@@ -27,7 +27,8 @@ exports.crearUsuario = functions.https.onRequest(async (req, res) => {
       return res.status(400).json({error: "La edad debe ser un número"});
     }
 
-    const docRef = await admin.firestore().collection("perfiles").add({
+    const docRef = await admin.firestore().collection("perfiles").doc(uid).set({
+      uid,
       nombre,
       email,
       edad: edadInt,
@@ -40,6 +41,8 @@ exports.crearUsuario = functions.https.onRequest(async (req, res) => {
     return res.status(500).json({error: "No se pudo crear el perfil"});
   }
 });
+//NECESARIO QUE HAGA EL DEPLOY DE LA FUNCION AL CAMBIARLA PORQUE SINO LA CONSULTA
+//NO FUNCIONARA Y NO SE REALIZARÁ LA INSERCION.
 
 // Crear Producto
 exports.crearProducto = functions.https.onRequest(async (req, res) => {
