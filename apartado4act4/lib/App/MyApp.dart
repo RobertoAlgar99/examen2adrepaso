@@ -1,4 +1,5 @@
 import 'package:apartado4act4/Views/homeviewlisten.dart';
+import 'package:apartado4act4/Views/logincongoogle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -21,6 +22,7 @@ class Myapp extends StatelessWidget{
       */
       
       "/homeViewListen": (context) => Homeviewlisten(),
+      "/logincongoogle": (context) => Logincongoogle(),
       
     };
 
@@ -35,7 +37,7 @@ class Myapp extends StatelessWidget{
     MaterialApp app = MaterialApp(
       title: "Mi primera app",
       routes: rutas,
-      initialRoute: "/homeViewListen",
+      initialRoute: "/logincongoogle",
       debugShowCheckedModeBanner: false,
     );
 
