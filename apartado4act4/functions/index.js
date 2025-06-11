@@ -89,6 +89,30 @@ exports.crearCompra = functions.https.onRequest(async (req, res) => {
   }
 });
 
+exports.obtenerUsuariosPorEdad = functions.https.onRequest(async (req, res) => {
+  const edadMin = parseInt(req.query.edad);
+
+  if (isNaN(edadMin)) {
+    return res.status(400).json({error: "Edad no válida"});
+  }
+
+  try {
+    const snapshot = await admin.firestore()
+        .collection("perfiles")
+        .where("edad", ">=", edadMin)
+        .get();
+
+    const resultados = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    return res.status(200).json(resultados);
+  } catch (error) {
+    console.error("Error al buscar usuarios:", error);
+    return res.status(500).json({error: "No se pudo filtrar por edad"});
+  }
+});
 
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
