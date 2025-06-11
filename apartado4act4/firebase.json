@@ -1,0 +1,47 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "examen2repaso",
+          "appId": "1:19903019689:android:23ce6c6cce24c6a15307b8",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "examen2repaso",
+          "appId": "1:19903019689:ios:004164da5766ddb55307b8",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "examen2repaso",
+          "configurations": {
+            "android": "1:19903019689:android:23ce6c6cce24c6a15307b8",
+            "ios": "1:19903019689:ios:004164da5766ddb55307b8",
+            "web": "1:19903019689:web:7b19c658143c6d115307b8"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
+      ]
+    }
+  ]
+}
